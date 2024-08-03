@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import TaskInput from './components/TaskInput';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+interface Task {
+  key: string;
+  value: string;
 }
+
+const App: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  const addTask = (task: string) => {
+    setTasks([...tasks, { key: Math.random().toString(), value: task }]);
+  };
+
+  const removeTask = (taskKey: string) => {
+    setTasks(tasks.filter(task => task.key !== taskKey));
+  };
+
+  return (
+    <GestureHandlerRootView style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        <TaskInput onAddTask={addTask} />
+        
+      </SafeAreaView>
+    </GestureHandlerRootView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 50,
+    paddingHorizontal: 20,
+    backgroundColor: '#f0f0f0',
+  },
+  listContent: {
+    paddingBottom: 20,
   },
 });
+
+export default App;
