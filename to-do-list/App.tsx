@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import TaskInput from './components/TaskInput';
+import TaskItem from './components/TaskItem';
 
 interface Task {
   key: string;
@@ -23,7 +24,14 @@ const App: React.FC = () => {
     <GestureHandlerRootView style={styles.container}>
       <SafeAreaView style={styles.container}>
         <TaskInput onAddTask={addTask} />
-        
+        <FlatList
+          data={tasks}
+          renderItem={({ item }) => (
+            <TaskItem task={item} onDeleteTask={removeTask} />
+          )}
+          keyExtractor={(item) => item.key}
+          contentContainerStyle={styles.listContent}
+        />
       </SafeAreaView>
     </GestureHandlerRootView>
   );
