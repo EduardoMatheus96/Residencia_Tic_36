@@ -20,7 +20,7 @@ const TaskInput: React.FC<TaskInputProps> = ({ onAddTask }) => {
   return (
     <View style={styles.inputContainer}>
       <TextInput
-        placeholder="Add a task"
+        placeholder="Adicione uma Tarefa"
         style={styles.input}
         value={task}
         onChangeText={setTask}
