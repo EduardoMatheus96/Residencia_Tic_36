@@ -1,15 +1,16 @@
+// app/(tabs)/index.tsx
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import TaskInput from './components/TaskInput';
-import TaskList from './components/TaskList';
+import TaskInput from '../components/TaskInput';
+import TaskList from '../components/TaskList';
 
 interface Task {
   key: string;
   value: string;
 }
 
-const App: React.FC = () => {
+export default function HomeScreen() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const addTask = (task: string) => {
@@ -28,7 +29,7 @@ const App: React.FC = () => {
       </SafeAreaView>
     </GestureHandlerRootView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -38,5 +39,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
 });
-
-export default App;

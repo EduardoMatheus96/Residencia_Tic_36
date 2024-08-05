@@ -1,4 +1,4 @@
-// components/TaskInput.tsx
+// app/components/TaskInput.tsx
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -20,7 +20,7 @@ const TaskInput: React.FC<TaskInputProps> = ({ onAddTask }) => {
   return (
     <View style={styles.inputContainer}>
       <TextInput
-        placeholder="Adicione uma Tarefa"
+        placeholder="Add a task"
         style={styles.input}
         value={task}
         onChangeText={setTask}

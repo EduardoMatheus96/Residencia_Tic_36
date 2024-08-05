@@ -1,4 +1,4 @@
-// components/TaskList.tsx
+// app/components/TaskList.tsx
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import TaskItem from './TaskItem';
